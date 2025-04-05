@@ -1,4 +1,4 @@
-def get_reverse(line: str) -> str:
+def get_reverse_loop(line: str) -> str:
     if not isinstance(line, str):
         raise TypeError("Input must be a string")
 

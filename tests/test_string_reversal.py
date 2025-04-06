@@ -1,5 +1,6 @@
 import unittest
-from src.string_reversal import get_reverse_loop
+from src.string_reversal import get_reverse_loop, get_reverse_slice
+
 
 class GetStringReverseLoop(unittest.TestCase):
     def test_common_strings(self):
@@ -28,3 +29,25 @@ class GetStringReverseLoop(unittest.TestCase):
             get_reverse_loop(None)
         with self.assertRaises(TypeError):
             get_reverse_loop(True)
+
+
+class GetStringReverseSlice(unittest.TestCase):
+    def test_common_strings(self):
+        self.assertEqual(get_reverse_slice("bred"), "derb")
+        self.assertEqual(get_reverse_slice("Python"), "nohtyP")
+        self.assertEqual(get_reverse_loop("laptop"), "potpal")
+        self.assertEqual(get_reverse_loop("racecar"), "racecar")
+        self.assertEqual(get_reverse_loop("-12345"), "54321-")
+
+    def test_with_space(self):
+        self.assertEqual(get_reverse_loop("game over"), "revo emag")
+        self.assertEqual(get_reverse_loop(" "), " ")
+
+    def test_empty_space(self):
+        self.assertEqual(get_reverse_loop(""), "")
+
+    def test_type_error(self):
+        with self.assertRaises(TypeError):
+            get_reverse_loop(9)
+        with self.assertRaises(TypeError):
+            get_reverse_slice([1, 2, 3])

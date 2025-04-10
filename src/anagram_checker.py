@@ -1,9 +1,12 @@
 def is_anagram_2_dicts(line_a: str, line_b: str) -> bool:
     if not isinstance(line_a, str) or not isinstance(line_b, str):
-        raise TypeError("Both stings must be str")
+        raise TypeError("Both lines must be str type")
 
     if len(line_a) != len(line_b):
         return False
+
+    line_a = line_a.lower()
+    line_b = line_b.lower()
 
     count_a, count_b = {}, {}
 

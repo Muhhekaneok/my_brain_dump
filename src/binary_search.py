@@ -1,3 +1,4 @@
+# Must return the index of the target value in the array using a binary search algorithm
 def get_binary_search(array: list, target: int) -> int:
     if not isinstance(array, list) or not isinstance(target, int):
         raise TypeError("Inputs must be list and integer")
@@ -9,7 +10,7 @@ def get_binary_search(array: list, target: int) -> int:
         middle = (left + right) // 2
         if array[middle] == target:
             return middle
-        elif middle < target:
+        elif array[middle] < target:
             left = middle + 1
         else:
             right = middle - 1

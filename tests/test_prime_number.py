@@ -1,6 +1,9 @@
 import unittest
+from symtable import Class
 
-from src.prime_number_checker import is_prime_number, is_prime_number_optimized
+from src.prime_number_checker import (is_prime_number,
+                                      is_prime_number_optimized,
+                                      get_sieve_of_eratosthenes)
 
 
 class TestPrimeNumberChecker(unittest.TestCase):
@@ -57,3 +60,27 @@ class TestPrimeNumberCheckerOptimized(unittest.TestCase):
             is_prime_number_optimized("a")
         with self.assertRaises(TypeError):
             is_prime_number_optimized([10])
+
+
+class TestSieveOfEratosthenes(unittest.TestCase):
+    def test_sieve_of_eratosthenes(self):
+        self.assertEqual(get_sieve_of_eratosthenes(13), [2, 3, 5, 7, 11, 13])
+        self.assertEqual(
+            get_sieve_of_eratosthenes(51), [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47])
+
+    def test_edge_cases(self):
+        self.assertEqual(get_sieve_of_eratosthenes(-1), [])
+        self.assertEqual(get_sieve_of_eratosthenes(0), [])
+        self.assertEqual(get_sieve_of_eratosthenes(1), [])
+        self.assertEqual(get_sieve_of_eratosthenes(2), [2])
+
+    def test_partial_check(self):
+        primes = get_sieve_of_eratosthenes(100)
+        self.assertIn(97, primes)
+        self.assertNotIn(100, primes)
+
+    def test_type_error(self):
+        with self.assertRaises(TypeError):
+            get_sieve_of_eratosthenes([1])
+        with self.assertRaises(TypeError):
+            get_sieve_of_eratosthenes("5")

@@ -43,6 +43,3 @@ def get_sieve_of_eratosthenes(n: int) -> list:
                 sieve_list[j] = False
 
     return [index for index, is_prime in enumerate(sieve_list) if is_prime]
-
-
-# print(get_sieve_of_eratosthenes(997))

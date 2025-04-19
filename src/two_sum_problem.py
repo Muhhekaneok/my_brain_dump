@@ -9,3 +9,6 @@ def get_two_sum_indices(lst: list, s: int) -> tuple:
             return seen[complement], i
         seen[num] = i
     return ()
+
+
+print(get_two_sum_indices([], 10))

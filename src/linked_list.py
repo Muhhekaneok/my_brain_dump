@@ -47,4 +47,3 @@ class LinkedList:
             print(current.data, end=" -> ")
             current = current.next
         print("None")
-
